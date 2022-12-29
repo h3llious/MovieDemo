@@ -6,7 +6,7 @@
     android:id="@+id/nav_graph">
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.anb.moviedemo.ui.main.MainFragment"
+        android:name="com.anb.moviedemo.presentation.main.MainFragment"
         android:label="MainFragment"
         tools:layout="@layout/fragment_main" >
         <action

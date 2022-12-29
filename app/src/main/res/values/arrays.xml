@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer-array name="poster_drawable_ids">
+        <item>@drawable/tenet</item>
+        <item>@drawable/spider_man</item>
+        <item>@drawable/knives_out</item>
+        <item>@drawable/guardians_of_the_galaxy</item>
+        <item>@drawable/avengers</item>
+    </integer-array>
+</resources>

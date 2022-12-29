@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MovieDemo</string>
+    <string name="text_sort">Sort</string>
+    <string name="text_movies">Movies</string>
+    <string name="text_on_my_watchlist">On my watchlist</string>
+    <string name="text_item_movie_info">%1$s - %2$s</string>
+    <string name="text_movie_poster">movie poster</string>
 </resources>
