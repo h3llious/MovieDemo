@@ -2,6 +2,7 @@ package com.anb.moviedemo.presentation.main
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.AdapterView.OnItemClickListener
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -9,7 +10,9 @@ import com.anb.moviedemo.R
 import com.anb.moviedemo.databinding.ItemMovieBinding
 import com.anb.moviedemo.presentation.uimodel.MovieUiModel
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter(
+    private val onItemClickListener: () -> Unit
+) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     private var movieList = listOf<MovieUiModel>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -36,6 +39,12 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
         private val view: ItemMovieBinding
     ) : RecyclerView.ViewHolder(view.root) {
 
+        init {
+            view.root.setOnClickListener {
+                onItemClickListener.invoke()
+            }
+        }
+
         fun bind(movie: MovieUiModel) {
             with(view) {
                 tvTitle.text = movie.title
@@ -45,8 +54,7 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
                     movie.genre
                 )
                 tvWatchlist.isVisible = movie.isFavorite
-//                ivItemPoster.setImageResource(root.resources.getIntArray(R.array.poster_drawable_ids)[movie.posterEnum.ordinal])
-                ivItemPoster.setImageResource(R.drawable.tenet)
+                ivItemPoster.setImageResource(movie.posterResource)
             }
         }
     }

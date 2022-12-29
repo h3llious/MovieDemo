@@ -4,11 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.anb.moviedemo.databinding.FragmentMainBinding
 import com.anb.moviedemo.presentation.base.BaseFragment
+import com.anb.moviedemo.presentation.main.MainFragmentDirections.Companion.actionMainFragmentToDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,7 +31,10 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     }
 
     private fun initViews() {
-        movieAdapter = MovieAdapter()
+        (activity as AppCompatActivity).supportActionBar?.hide()
+        movieAdapter = MovieAdapter(onItemClickListener = {
+            findNavController().navigate(actionMainFragmentToDetailFragment())
+        })
         binding.rvMovies.apply {
             adapter = movieAdapter
             addItemDecoration(DividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL))

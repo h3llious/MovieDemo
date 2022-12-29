@@ -24,14 +24,13 @@
         android:layout_weight="3">
         <TextView
             android:id="@+id/tvTitle"
+            style="@style/MovieTextTitle"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/tvInfo"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
             android:textSize="22sp"
-            android:textColor="@color/black"
             app:layout_constraintVertical_chainStyle="packed"
             tools:text="Spider-Man: Into the Spider-Verse (2018)"/>
         <TextView

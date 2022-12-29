@@ -3,6 +3,7 @@ package com.anb.moviedemo.presentation.main
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.anb.moviedemo.R
 import com.anb.moviedemo.presentation.base.MoviePoster
 import com.anb.moviedemo.presentation.uimodel.MovieUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -15,7 +16,7 @@ class MainViewModel @Inject constructor(): ViewModel() {
             MovieUiModel(
                 "Tenet",
                 "Armed with only one word, Tenet, and fighting for the survival of the entire world, a Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
-                MoviePoster.TENET,
+                R.drawable.tenet, // Temporary, move to fragment later
                 7.8,
                 "2h 30 min",
                 "Action, Sci-Fi",

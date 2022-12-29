@@ -6,7 +6,8 @@ import com.anb.moviedemo.presentation.base.MoviePoster
 data class MovieUiModel(
     val title: String,
     val description: String,
-    val posterEnum: MoviePoster,
+    @DrawableRes
+    val posterResource: Int,
     val rating: Double,
     val duration: String,
     val genre: String,

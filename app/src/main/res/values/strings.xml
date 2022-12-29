@@ -5,4 +5,12 @@
     <string name="text_on_my_watchlist">On my watchlist</string>
     <string name="text_item_movie_info">%1$s - %2$s</string>
     <string name="text_movie_poster">movie poster</string>
+    <string name="text_per_ten">/10</string>
+    <string name="text_detail_add_to_watchlist">+ Add to watchlist</string>
+    <string name="text_detail_remove_from_watchlist">Remove from watchlist</string>
+    <string name="text_detail_watch_trailer">Watch Trailer</string>
+    <string name="text_detail_short_description">Short description</string>
+    <string name="text_detail_details">Details</string>
+    <string name="text_detail_genre">Genre</string>
+    <string name="text_detail_released_date">Released date</string>
 </resources>
