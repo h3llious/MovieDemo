@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:id="@+id/group1">
+        <item
+            android:id="@+id/item_title"
+            android:title="@string/text_title" />
+    </group>
+    <group android:id="@+id/group2">
+        <item
+            android:id="@+id/item_release"
+            android:title="@string/text_released_date" />
+    </group>
+    <group android:id="@+id/group3">
+        <item
+            android:id="@+id/item_cancel"
+            android:title="@string/text_cancel" />
+    </group>
+</menu>

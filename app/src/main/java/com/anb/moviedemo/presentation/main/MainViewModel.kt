@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.anb.moviedemo.R
 import com.anb.moviedemo.presentation.base.MoviePoster
+import com.anb.moviedemo.presentation.base.SORT_TYPE_TITLE
 import com.anb.moviedemo.presentation.uimodel.MovieUiModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -27,4 +28,10 @@ class MainViewModel @Inject constructor(): ViewModel() {
     )
     val movies: LiveData<List<MovieUiModel>>
         get() = _movies
+
+    var sortType: Int = SORT_TYPE_TITLE
+        set(value) {
+            field = value
+            // TODO invoke something
+        }
 }
