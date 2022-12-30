@@ -9,15 +9,17 @@ import androidx.room.Query
 @Dao
 interface MovieDao {
 
-    @Query("SELECT * FROM movie ORDER BY :sort")
-    fun getAllMovies(sort: String): LiveData<List<MovieEntity>>
+    @Query("SELECT * FROM movie ORDER BY "+
+            "      CASE :sort WHEN 'title' THEN title END DESC," +
+            "      CASE :sort WHEN 'releaseDate' THEN releaseDate END DESC")
+    suspend fun getAllMovies(sort: String): List<MovieEntity>
 
     @Query("SELECT * from movie WHERE id = :id")
-    fun getItem(id: Int): LiveData<MovieEntity>
+    fun getMovie(id: Int): LiveData<MovieEntity>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovies(items: List<MovieEntity>)
 
-    @Query("UPDATE movie SET isfavorite = :isFavorite WHERE id =:id")
+    @Query("UPDATE movie SET isFavorite = :isFavorite WHERE id =:id")
     suspend fun updateMovie(isFavorite: Boolean, id: Int)
 }

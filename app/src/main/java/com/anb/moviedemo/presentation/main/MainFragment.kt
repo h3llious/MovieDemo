@@ -22,6 +22,7 @@ import com.anb.moviedemo.presentation.base.BaseFragment
 import com.anb.moviedemo.presentation.base.SORT_TYPE_RELEASE_DATE
 import com.anb.moviedemo.presentation.base.SORT_TYPE_TITLE
 import com.anb.moviedemo.presentation.main.MainFragmentDirections.Companion.actionMainFragmentToDetailFragment
+import com.anb.moviedemo.presentation.uimodel.toUiModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -40,10 +41,15 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
         bindViewEvents()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getAllMovies()
+    }
+
     private fun initViews() {
         (activity as AppCompatActivity).supportActionBar?.hide()
         movieAdapter = MovieAdapter(onItemClickListener = {
-            findNavController().navigate(actionMainFragmentToDetailFragment())
+            findNavController().navigate(actionMainFragmentToDetailFragment(it))
         })
         binding.rvMovies.apply {
             adapter = movieAdapter
@@ -52,8 +58,8 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     }
 
     private fun bindViewModel() {
-        viewModel.movies.observe(viewLifecycleOwner) {
-            movieAdapter.setMovieList(it)
+        viewModel.movies.observe(viewLifecycleOwner) { movies ->
+            movieAdapter.setMovieList(movies.map { it.toUiModel() })
         }
     }
 
@@ -62,6 +68,7 @@ class MainFragment : BaseFragment<FragmentMainBinding>() {
     }
 
     private fun initSortPopup() {
+        // TODO can save sort type into SharedPreference later
         val popup = PopupMenu(requireContext(), binding.tvSort)
         val menu = popup.menu
         MenuCompat.setGroupDividerEnabled(menu, true)

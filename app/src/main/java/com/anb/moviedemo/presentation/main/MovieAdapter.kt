@@ -1,9 +1,8 @@
 package com.anb.moviedemo.presentation.main
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView.OnItemClickListener
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.anb.moviedemo.R
@@ -11,7 +10,7 @@ import com.anb.moviedemo.databinding.ItemMovieBinding
 import com.anb.moviedemo.presentation.uimodel.MovieUiModel
 
 class MovieAdapter(
-    private val onItemClickListener: () -> Unit
+    private val onItemClickListener: (id: Int) -> Unit
 ) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     private var movieList = listOf<MovieUiModel>()
 
@@ -39,23 +38,27 @@ class MovieAdapter(
         private val view: ItemMovieBinding
     ) : RecyclerView.ViewHolder(view.root) {
 
-        init {
-            view.root.setOnClickListener {
-                onItemClickListener.invoke()
-            }
-        }
-
         fun bind(movie: MovieUiModel) {
             with(view) {
-                tvTitle.text = movie.title
+                tvTitle.text = movie.title + " (${movie.releaseYear})"
                 tvInfo.text = root.resources.getString(
                     R.string.text_item_movie_info,
                     movie.duration,
                     movie.genre
                 )
                 tvWatchlist.isVisible = movie.isFavorite
-                ivItemPoster.setImageResource(movie.posterResource)
+                ivItemPoster.setImageResource(getPosterResource(root.context, movie.posterId))
+                root.setOnClickListener {
+                    onItemClickListener.invoke(movie.id)
+                }
             }
+        }
+
+        private fun getPosterResource(context: Context, position: Int): Int {
+            val imageIds = context.resources.obtainTypedArray(R.array.poster_drawable_ids)
+            val resource = imageIds.getResourceId(position, 0)
+            imageIds.recycle()
+            return resource
         }
     }
 }

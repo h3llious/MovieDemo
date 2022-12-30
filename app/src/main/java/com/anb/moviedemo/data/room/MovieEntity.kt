@@ -13,7 +13,7 @@ data class MovieEntity(
     val rating: Double,
     val duration: String,
     val genre: String,
-    val releaseDate: String,
+    val releaseDate: Long,
     val trailer: String,
     var isFavorite: Boolean = false
 )

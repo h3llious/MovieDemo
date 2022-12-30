@@ -11,10 +11,10 @@
 
     <ImageView
         android:id="@+id/ivItemPoster"
-        android:layout_width="140dp"
+        android:layout_width="100dp"
         android:scaleType="centerCrop"
         tools:src="@drawable/tenet"
-        android:layout_height="200dp"
+        android:layout_height="150dp"
         android:contentDescription="@string/text_movie_poster" />
 
     <androidx.constraintlayout.widget.ConstraintLayout

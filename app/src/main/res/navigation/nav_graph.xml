@@ -17,5 +17,9 @@
         android:id="@+id/detailFragment"
         android:name="com.anb.moviedemo.presentation.detail.DetailFragment"
         android:label="DetailFragment"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
 </navigation>

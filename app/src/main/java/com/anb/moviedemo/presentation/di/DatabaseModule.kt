@@ -16,11 +16,8 @@ class DatabaseModule {
     @Provides
     @Singleton
     fun provideRoomDatabase(@ApplicationContext context: Context): MovieDatabase {
-        return Room.databaseBuilder(
-            context,
-            MovieDatabase::class.java, "movie-db"
-        ).build()
-        // create prepopulate database
+        return Room.databaseBuilder(context, MovieDatabase::class.java, "movie-db")
+            .createFromAsset("database/movie-db.db")
+            .build()
     }
-
 }
